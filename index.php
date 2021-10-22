@@ -2,8 +2,6 @@
 include_once "vendor/autoload.php";
 
 $disciplinaDAO = new \App\Model\DisciplinaDAO();
-
-$disciplina = new \App\Model\Disciplina("teste 3");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,15 +16,27 @@ $disciplina = new \App\Model\Disciplina("teste 3");
         integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
 
+    <!-- jquery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
     <title>Configurações</title>
 </head>
 
 <body>
     <section class="container">
         <h2>Disciplina</h2>
-        <button class="btn btn-success">
+        <button class="btn btn-primary" onclick="myFunction()">
             <i class="bi bi-plus-lg"></i>
         </button>
+        <div id="div-create-disciplina">
+            <form action="App/Controller/CreateDisciplina.php" method="post">
+                Nome:
+                <input type="text" name="nome-create-disciplina">
+                <button class="btn btn-success">
+                    <i class="bi bi-check-lg"></i>
+                </button>
+            </form>
+        </div>
         <table class="table">
             <thead>
                 <tr>
@@ -42,13 +52,18 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
                         <?=$disciplina['id_disciplina']?>
                     </td>
                     <td>
-                        <input type="text" name="nome" value="<?=$disciplina['nome']?>" required>
-                        <button id="submit_button">teste</button>
+                        <form action="#" method="post" name="frm">
+                            <input type="text" name="nome" value="<?=$disciplina['nome']?>">
+                            <button type="submit" class="btn btn-success" id="send">
+                                <i class="bi bi-check-lg"></i>
+                            </button>
+                        </form>
                     </td>
                     <td>
-                        <button class="btn btn-danger">
+                        <a href="App/Controller/DeleteDisciplina.php?id_disciplina=<?=$disciplina['id_disciplina']?>"
+                            class="btn btn-danger">
                             <i class="bi bi-trash"></i>
-                        </button>
+                        </a>
                     </td>
                 </tr>
                 <?php
@@ -57,21 +72,15 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
             </tbody>
         </table>
     </section>
-
-    <script type="text/javascript">
-    $(document).ready(function() {
-        $("#submit_button").hide();
-
-        $('.required').on('keyup', function() {
-            var showBtn = true;
-            // Check all inputs
-            $('.required').each(function() {
-                showBtn = showBtn && ($(this).val() !== "");
-            }); //Edited
-            // Hide or show the button according to the boolean value
-            $("#submit_button").toggle(showBtn);
-        });
-    });
+    <script>
+    function myFunction() {
+        var x = document.getElementById("div-create-disciplina");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
     </script>
 </body>
 
