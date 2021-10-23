@@ -3,8 +3,6 @@ namespace App\Model;
 
 use PDO;
 
-include_once "../../vendor/autoload.php";
-
 class AtuacaoDAO
 {
     public function createAtuacao(Atuacao $atuacao)
