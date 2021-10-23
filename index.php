@@ -52,8 +52,10 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
                         <?=$disciplina['id_disciplina']?>
                     </td>
                     <td>
-                        <form action="#" method="post" name="frm">
-                            <input type="text" name="nome" value="<?=$disciplina['nome']?>">
+                        <form
+                            action="App/Controller/UpdateDisciplina.php?id_disciplina=<?=$disciplina['id_disciplina']?>"
+                            method="post" name="frm">
+                            <input type="text" name="nome-update-disciplina" value="<?=$disciplina['nome']?>">
                             <button type="submit" class="btn btn-success" id="send">
                                 <i class="bi bi-check-lg"></i>
                             </button>

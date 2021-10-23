@@ -31,7 +31,7 @@ class DisciplinaDAO
 
     public function updateDisciplina(Disciplina $disciplina)
     {
-        $sql = "UPDATE disciplina SET nome = :nome WHERE id = :id";
+        $sql = "UPDATE disciplina SET nome = :nome WHERE id_disciplina = :id";
 
         $statement = Conexao::getInstance()->prepare($sql);
 
