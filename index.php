@@ -3,6 +3,7 @@ include_once "vendor/autoload.php";
 
 $disciplinaDAO = new \App\Model\DisciplinaDAO();
 $atuacaoDAO = new \App\Model\AtuacaoDAO();
+$categoriaDAO = new \App\Model\CategoriaDAO();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -130,9 +131,67 @@ foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
         </table>
     </section>
 
+    <!-- Categoria -->
+    <section class="container">
+        <h2>Categoria</h2>
+        <button class="btn btn-primary" onclick="hideShowCategoria()">
+            <i class="bi bi-plus-lg"></i>
+        </button>
+        <div id="div-create-categoria">
+            <form action="App/Controller/CreateCategoria.php" method="post">
+                Nome:
+                <input type="text" name="nome_create_categoria">
+                Destaque:
+                <input type="text" name="destaque_create_categoria">
+                <button class="btn btn-success">
+                    <i class="bi bi-check-lg"></i>
+                </button>
+            </form>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome & Categoria</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+foreach ($categoriaDAO->readCategoria() as $categoria) {?>
+                <tr>
+                    <td>
+                        <?=$categoria['id_categoria']?>
+                    </td>
+                    <td>
+                        <form action="App/Controller/UpdateCategoria.php?id_categoria=<?=$categoria['id_categoria']?>"
+                            method="post" name="frm">
+                            <input type="text" name="nome_update_categoria" value="<?=$categoria['nome']?>"
+                                class="form-control">
+                            <input type="text" name="destaque_update_categoria" value="<?=$categoria['destaque']?>"
+                                class="form-control">
+                            <button type="submit" class="btn btn-success" id="send">
+                                <i class="bi bi-check-lg"></i>
+                            </button>
+                        </form>
+                    </td>
+                    <td>
+                        <a href="App/Controller/DeleteCategoria.php?id_categoria=<?=$categoria['id_categoria']?>"
+                            class="btn btn-danger">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                <?php
+}
+?>
+            </tbody>
+        </table>
+    </section>
+
     <script>
     document.getElementById("div-create-disciplina").style.display = "none";
     document.getElementById("div-create-atuacao").style.display = "none";
+    document.getElementById("div-create-categoria").style.display = "none";
 
     function hideShowDisciplina() {
         var x = document.getElementById("div-create-disciplina");
@@ -145,6 +204,15 @@ foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
 
     function hideShowAtuacao() {
         var x = document.getElementById("div-create-atuacao");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+    function hideShowCategoria() {
+        var x = document.getElementById("div-create-categoria");
         if (x.style.display === "none") {
             x.style.display = "block";
         } else {
