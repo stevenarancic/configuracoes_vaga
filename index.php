@@ -2,6 +2,7 @@
 include_once "vendor/autoload.php";
 
 $disciplinaDAO = new \App\Model\DisciplinaDAO();
+$atuacaoDAO = new \App\Model\AtuacaoDAO();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -25,7 +26,7 @@ $disciplinaDAO = new \App\Model\DisciplinaDAO();
 <body>
     <section class="container">
         <h2>Disciplina</h2>
-        <button class="btn btn-primary" onclick="myFunction()">
+        <button class="btn btn-primary" onclick="hideShowDisciplina()">
             <i class="bi bi-plus-lg"></i>
         </button>
         <div id="div-create-disciplina">
@@ -55,7 +56,8 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
                         <form
                             action="App/Controller/UpdateDisciplina.php?id_disciplina=<?=$disciplina['id_disciplina']?>"
                             method="post" name="frm">
-                            <input type="text" name="nome-update-disciplina" value="<?=$disciplina['nome']?>">
+                            <input type="text" name="nome-update-disciplina" value="<?=$disciplina['nome']?>"
+                                class="form-control">
                             <button type="submit" class="btn btn-success" id="send">
                                 <i class="bi bi-check-lg"></i>
                             </button>
@@ -74,9 +76,75 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
             </tbody>
         </table>
     </section>
+
+    <!-- Atuacao -->
+    <section class="container">
+        <h2>Atuação</h2>
+        <button class="btn btn-primary" onclick="hideShowAtuacao()">
+            <i class="bi bi-plus-lg"></i>
+        </button>
+        <div id="div-create-atuacao">
+            <form action="App/Controller/CreateAtuacao.php" method="post">
+                Nome:
+                <input type="text" name="nome-create-atuacao">
+                <button class="btn btn-success">
+                    <i class="bi bi-check-lg"></i>
+                </button>
+            </form>
+        </div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Nome</th>
+                </tr>
+            </thead>
+            <tbody>
+                <?php
+foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
+                <tr>
+                    <td>
+                        <?=$atuacao['id_atuacao']?>
+                    </td>
+                    <td>
+                        <form action="App/Controller/UpdateAtuacao.php?id_atuacao=<?=$atuacao['id_atuacao']?>"
+                            method="post" name="frm">
+                            <input type="text" name="nome-update-atuacao" value="<?=$atuacao['nome']?>"
+                                class="form-control">
+                            <button type="submit" class="btn btn-success" id="send">
+                                <i class="bi bi-check-lg"></i>
+                            </button>
+                        </form>
+                    </td>
+                    <td>
+                        <a href="App/Controller/DeleteAtuacao.php?id_atuacao=<?=$atuacao['id_atuacao']?>"
+                            class="btn btn-danger">
+                            <i class="bi bi-trash"></i>
+                        </a>
+                    </td>
+                </tr>
+                <?php
+}
+?>
+            </tbody>
+        </table>
+    </section>
+
     <script>
-    function myFunction() {
+    document.getElementById("div-create-disciplina").style.display = "none";
+    document.getElementById("div-create-atuacao").style.display = "none";
+
+    function hideShowDisciplina() {
         var x = document.getElementById("div-create-disciplina");
+        if (x.style.display === "none") {
+            x.style.display = "block";
+        } else {
+            x.style.display = "none";
+        }
+    }
+
+    function hideShowAtuacao() {
+        var x = document.getElementById("div-create-atuacao");
         if (x.style.display === "none") {
             x.style.display = "block";
         } else {
