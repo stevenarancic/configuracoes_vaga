@@ -30,10 +30,10 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
         <button class="btn btn-primary" onclick="hideShowDisciplina()">
             <i class="bi bi-plus-lg"></i>
         </button>
-        <div id="div-create-disciplina">
+        <div id="div_create_disciplina">
             <form action="App/Controller/CreateDisciplina.php" method="post">
                 Nome:
-                <input type="text" name="nome-create-disciplina">
+                <input type="text" name="nome_create_disciplina">
                 <button class="btn btn-success">
                     <i class="bi bi-check-lg"></i>
                 </button>
@@ -57,7 +57,7 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
                         <form
                             action="App/Controller/UpdateDisciplina.php?id_disciplina=<?=$disciplina['id_disciplina']?>"
                             method="post" name="frm">
-                            <input type="text" name="nome-update-disciplina" value="<?=$disciplina['nome']?>"
+                            <input type="text" name="nome_update_disciplina" value="<?=$disciplina['nome']?>"
                                 class="form-control">
                             <button type="submit" class="btn btn-success" id="send">
                                 <i class="bi bi-check-lg"></i>
@@ -84,10 +84,10 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
         <button class="btn btn-primary" onclick="hideShowAtuacao()">
             <i class="bi bi-plus-lg"></i>
         </button>
-        <div id="div-create-atuacao">
+        <div id="div_create_atuacao">
             <form action="App/Controller/CreateAtuacao.php" method="post">
                 Nome:
-                <input type="text" name="nome-create-atuacao">
+                <input type="text" name="nome_create_atuacao">
                 <button class="btn btn-success">
                     <i class="bi bi-check-lg"></i>
                 </button>
@@ -110,7 +110,7 @@ foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
                     <td>
                         <form action="App/Controller/UpdateAtuacao.php?id_atuacao=<?=$atuacao['id_atuacao']?>"
                             method="post" name="frm">
-                            <input type="text" name="nome-update-atuacao" value="<?=$atuacao['nome']?>"
+                            <input type="text" name="nome_update_atuacao" value="<?=$atuacao['nome']?>"
                                 class="form-control">
                             <button type="submit" class="btn btn-success" id="send">
                                 <i class="bi bi-check-lg"></i>
@@ -137,7 +137,7 @@ foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
         <button class="btn btn-primary" onclick="hideShowCategoria()">
             <i class="bi bi-plus-lg"></i>
         </button>
-        <div id="div-create-categoria">
+        <div id="div_create_categoria">
             <form action="App/Controller/CreateCategoria.php" method="post">
                 Nome:
                 <input type="text" name="nome_create_categoria">
@@ -189,12 +189,12 @@ foreach ($categoriaDAO->readCategoria() as $categoria) {?>
     </section>
 
     <script>
-    document.getElementById("div-create-disciplina").style.display = "none";
-    document.getElementById("div-create-atuacao").style.display = "none";
-    document.getElementById("div-create-categoria").style.display = "none";
+    document.getElementById("div_create_disciplina").style.display = "none";
+    document.getElementById("div_create_atuacao").style.display = "none";
+    document.getElementById("div_create_categoria").style.display = "none";
 
     function hideShowDisciplina() {
-        var x = document.getElementById("div-create-disciplina");
+        var x = document.getElementById("div_create_disciplina");
         if (x.style.display === "none") {
             x.style.display = "block";
         } else {
@@ -203,7 +203,7 @@ foreach ($categoriaDAO->readCategoria() as $categoria) {?>
     }
 
     function hideShowAtuacao() {
-        var x = document.getElementById("div-create-atuacao");
+        var x = document.getElementById("div_create_atuacao");
         if (x.style.display === "none") {
             x.style.display = "block";
         } else {
@@ -212,7 +212,7 @@ foreach ($categoriaDAO->readCategoria() as $categoria) {?>
     }
 
     function hideShowCategoria() {
-        var x = document.getElementById("div-create-categoria");
+        var x = document.getElementById("div_create_categoria");
         if (x.style.display === "none") {
             x.style.display = "block";
         } else {
