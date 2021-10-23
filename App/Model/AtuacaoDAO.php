@@ -33,7 +33,7 @@ class AtuacaoDAO
 
     public function updateAtuacao(Atuacao $atuacao)
     {
-        $sql = "UPDATE disciplina SET nome = :nome WHERE id_atuacao = :id_atuacao";
+        $sql = "UPDATE atuacao SET nome = :nome WHERE id_atuacao = :id_atuacao";
 
         $statement = Conexao::getInstance()->prepare($sql);
 
