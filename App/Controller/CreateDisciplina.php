@@ -6,4 +6,4 @@ $disciplinaDAO = new \App\Model\DisciplinaDAO();
 
 $disciplinaDAO->createDisciplina($disciplina);
 
-header('location: ../../index.php');
+header('location: ../View/configuracoes_vaga.php');

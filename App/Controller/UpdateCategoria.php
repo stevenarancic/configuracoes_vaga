@@ -7,4 +7,4 @@ $categoria->setIdCategoria($_GET['id_categoria']);
 $categoriaDAO = new \App\Model\CategoriaDAO();
 $categoriaDAO->updateCategoria($categoria);
 
-header('location: ../../index.php');
+header('location: ../View/configuracoes_vaga.php');

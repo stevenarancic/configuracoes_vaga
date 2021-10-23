@@ -7,4 +7,4 @@ $disciplina->setId($_GET['id_disciplina']);
 $disciplinaDAO = new \App\Model\DisciplinaDAO();
 $disciplinaDAO->updateDisciplina($disciplina);
 
-header('location: ../../index.php');
+header('location: ../View/configuracoes_vaga.php');

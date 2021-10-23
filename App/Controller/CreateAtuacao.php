@@ -6,4 +6,4 @@ $atuacaoDAO = new \App\Model\AtuacaoDAO();
 
 $atuacaoDAO->createAtuacao($atuacao);
 
-header('location: ../../index.php');
+header('location: ../View/configuracoes_vaga.php');
