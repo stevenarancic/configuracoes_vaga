@@ -56,7 +56,8 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
                         <form
                             action="App/Controller/UpdateDisciplina.php?id_disciplina=<?=$disciplina['id_disciplina']?>"
                             method="post" name="frm">
-                            <input type="text" name="nome-update-disciplina" value="<?=$disciplina['nome']?>">
+                            <input type="text" name="nome-update-disciplina" value="<?=$disciplina['nome']?>"
+                                class="form-control">
                             <button type="submit" class="btn btn-success" id="send">
                                 <i class="bi bi-check-lg"></i>
                             </button>
@@ -108,7 +109,8 @@ foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
                     <td>
                         <form action="App/Controller/UpdateAtuacao.php?id_atuacao=<?=$atuacao['id_atuacao']?>"
                             method="post" name="frm">
-                            <input type="text" name="nome-update-atuacao" value="<?=$atuacao['nome']?>">
+                            <input type="text" name="nome-update-atuacao" value="<?=$atuacao['nome']?>"
+                                class="form-control">
                             <button type="submit" class="btn btn-success" id="send">
                                 <i class="bi bi-check-lg"></i>
                             </button>
@@ -129,6 +131,9 @@ foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
     </section>
 
     <script>
+    document.getElementById("div-create-disciplina").style.display = "none";
+    document.getElementById("div-create-atuacao").style.display = "none";
+
     function hideShowDisciplina() {
         var x = document.getElementById("div-create-disciplina");
         if (x.style.display === "none") {
