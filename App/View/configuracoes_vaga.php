@@ -26,18 +26,26 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
 
 <body>
     <section class="container">
-        <h2>Disciplina</h2>
-        <button class="btn btn-primary" onclick="hideShowDisciplina()">
-            <i class="bi bi-plus-lg"></i>
-        </button>
-        <div id="div_create_disciplina">
-            <form action="../Controller/CreateDisciplina.php" method="post">
-                Nome:
-                <input type="text" name="nome_create_disciplina">
-                <button class="btn btn-success">
-                    <i class="bi bi-check-lg"></i>
-                </button>
-            </form>
+        <div class="d-flex flex-row">
+            <div class="col">
+                <h2>Disciplina</h2>
+            </div>
+            <div class="col">
+                <div class="d-flex justify-content-end">
+                    <div id="div_create_disciplina" class="me-3">
+                        <form action="../Controller/CreateDisciplina.php" method="post" class="d-flex flex-row">
+                            Nome:
+                            <input type="text" name="nome_create_disciplina" class="form-control">
+                            <button class="btn btn-success">
+                                <i class="bi bi-check-lg"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <button class="btn btn-primary" onclick="hideShowDisciplina()">
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                </div>
+            </div>
         </div>
         <table class="table">
             <thead>
@@ -54,12 +62,12 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
                         <?=$disciplina['id_disciplina']?>
                     </td>
                     <td>
-                        <form
+                        <form class="d-flex"
                             action="../Controller/UpdateDisciplina.php?id_disciplina=<?=$disciplina['id_disciplina']?>"
                             method="post" name="frm">
                             <input type="text" name="nome_update_disciplina" value="<?=$disciplina['nome']?>"
                                 class="form-control">
-                            <button type="submit" class="btn btn-success" id="send">
+                            <button type="submit" class="btn btn-success ms-3" id="send">
                                 <i class="bi bi-check-lg"></i>
                             </button>
                         </form>
@@ -80,18 +88,26 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
 
     <!-- Atuacao -->
     <section class="container">
-        <h2>Atuação</h2>
-        <button class="btn btn-primary" onclick="hideShowAtuacao()">
-            <i class="bi bi-plus-lg"></i>
-        </button>
-        <div id="div_create_atuacao">
-            <form action="../Controller/CreateAtuacao.php" method="post">
-                Nome:
-                <input type="text" name="nome_create_atuacao">
-                <button class="btn btn-success">
-                    <i class="bi bi-check-lg"></i>
-                </button>
-            </form>
+        <div class="d-flex flex-row">
+            <div class="col">
+                <h2>Atuação</h2>
+            </div>
+            <div class="col">
+                <div class="d-flex justify-content-end">
+                    <div id="div_create_atuacao" class="me-3">
+                        <form action="../Controller/CreateAtuacao.php" method="post" class="d-flex flex-row">
+                            Nome:
+                            <input type="text" name="nome_create_atuacao" class="form-control">
+                            <button class="btn btn-success">
+                                <i class="bi bi-check-lg"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <button class="btn btn-primary" onclick="hideShowAtuacao()">
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                </div>
+            </div>
         </div>
         <table class="table">
             <thead>
@@ -108,11 +124,12 @@ foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
                         <?=$atuacao['id_atuacao']?>
                     </td>
                     <td>
-                        <form action="../Controller/UpdateAtuacao.php?id_atuacao=<?=$atuacao['id_atuacao']?>"
+                        <form class="d-flex"
+                            action="../Controller/UpdateAtuacao.php?id_atuacao=<?=$atuacao['id_atuacao']?>"
                             method="post" name="frm">
                             <input type="text" name="nome_update_atuacao" value="<?=$atuacao['nome']?>"
                                 class="form-control">
-                            <button type="submit" class="btn btn-success" id="send">
+                            <button type="submit" class="btn btn-success ms-3" id="send">
                                 <i class="bi bi-check-lg"></i>
                             </button>
                         </form>
@@ -133,26 +150,35 @@ foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
 
     <!-- Categoria -->
     <section class="container">
-        <h2>Categoria</h2>
-        <button class="btn btn-primary" onclick="hideShowCategoria()">
-            <i class="bi bi-plus-lg"></i>
-        </button>
-        <div id="div_create_categoria">
-            <form action="../Controller/CreateCategoria.php" method="post">
-                Nome:
-                <input type="text" name="nome_create_categoria">
-                Destaque:
-                <input type="text" name="destaque_create_categoria">
-                <button class="btn btn-success">
-                    <i class="bi bi-check-lg"></i>
-                </button>
-            </form>
+        <div class="d-flex flex-row">
+            <div class="col">
+                <h2>Categoria</h2>
+            </div>
+            <div class="col">
+                <div class="d-flex justify-content-end">
+                    <div id="div_create_categoria" class="me-3">
+                        <form action="../Controller/CreateCategoria.php" method="post" class="d-flex flex-row">
+                            Nome:
+                            <input type="text" name="nome_create_categoria" class="form-control">
+                            Destaque:
+                            <input type="text" name="destaque_create_categoria" class="form-control">
+                            <button class="btn btn-success">
+                                <i class="bi bi-check-lg"></i>
+                            </button>
+                        </form>
+                    </div>
+                    <button class="btn btn-primary" onclick="hideShowCategoria()">
+                        <i class="bi bi-plus-lg"></i>
+                    </button>
+                </div>
+            </div>
         </div>
         <table class="table">
             <thead>
                 <tr>
                     <th scope="col">#</th>
-                    <th scope="col">Nome & Categoria</th>
+                    <th scope="col">Nome</th>
+                    <th>Categoria</th>
                 </tr>
             </thead>
             <tbody>
@@ -162,18 +188,21 @@ foreach ($categoriaDAO->readCategoria() as $categoria) {?>
                     <td>
                         <?=$categoria['id_categoria']?>
                     </td>
-                    <td>
-                        <form action="../Controller/UpdateCategoria.php?id_categoria=<?=$categoria['id_categoria']?>"
-                            method="post" name="frm">
+                    <form class="d-flex"
+                        action="../Controller/UpdateCategoria.php?id_categoria=<?=$categoria['id_categoria']?>"
+                        method="post" name="frm">
+                        <td>
                             <input type="text" name="nome_update_categoria" value="<?=$categoria['nome']?>"
                                 class="form-control">
+                        </td>
+                        <td class="d-flex flex-row">
                             <input type="text" name="destaque_update_categoria" value="<?=$categoria['destaque']?>"
                                 class="form-control">
-                            <button type="submit" class="btn btn-success" id="send">
+                            <button type="submit" class="btn btn-success ms-3" id="send">
                                 <i class="bi bi-check-lg"></i>
                             </button>
-                        </form>
-                    </td>
+                        </td>
+                    </form>
                     <td>
                         <a href="../Controller/DeleteCategoria.php?id_categoria=<?=$categoria['id_categoria']?>"
                             class="btn btn-danger">
