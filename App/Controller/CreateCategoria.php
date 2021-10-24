@@ -5,4 +5,4 @@ $categoria = new \App\Model\Categoria($_POST['nome_create_categoria'], $_POST['d
 $categoriaDAO = new \App\Model\CategoriaDAO();
 
 $categoriaDAO->createCategoria($categoria);
-header('location: ../../index.php');
+header('location: ../View/configuracoes_vaga.php');

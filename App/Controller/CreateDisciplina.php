@@ -1,9 +1,9 @@
 <?php
 require_once "../../vendor/autoload.php";
 
-$disciplina = new \App\Model\Disciplina($_POST['nome-create-disciplina']);
+$disciplina = new \App\Model\Disciplina($_POST['nome_create_disciplina']);
 $disciplinaDAO = new \App\Model\DisciplinaDAO();
 
 $disciplinaDAO->createDisciplina($disciplina);
 
-header('location: ../../index.php');
+header('location: ../View/configuracoes_vaga.php');
