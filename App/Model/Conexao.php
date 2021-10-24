@@ -12,9 +12,9 @@ class Conexao
     {
         try {
             if (!isset(self::$instance)) {
-                $dsn = "mysql:host=localhost;dbname=bemfacil;charset=utf8";
-                $user = "root";
-                $pass = "";
+                $dsn = "mysql:host=mysql.bemfacilcontrate.com.br;dbname=bemfacilcontra01;charset=utf8";
+                $user = "bemfacilcontra01";
+                $pass = "bemfacil2019";
 
                 self::$instance = new PDO($dsn, $user, $pass);
             }
