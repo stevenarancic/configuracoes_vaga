@@ -1,4 +1,5 @@
 <?php
+
 require_once "../../vendor/autoload.php";
 
 $disciplinaDAO = new \App\Model\DisciplinaDAO();
@@ -255,8 +256,20 @@ foreach ($categoriaDAO->readCategoria() as $categoria) {?>
                                             class="form-control">
                                     </td>
                                     <td class="d-flex flex-row col-2">
-                                        <input type="text" name="destaque_update_categoria"
-                                            value="<?=$categoria['destaque']?>" class="form-control">
+                                        <select class="form-select" name="destaque_update_categoria">
+                                            <option selected>
+                                                <?=$categoria['destaque']?>
+                                            </option>
+                                            <?php if ($categoria['destaque'] == 'Sim') {?>
+                                            <option value="Não">
+                                                Não
+                                            </option>
+                                            <?php } else {?>
+                                            <option value="Sim">
+                                                Sim
+                                            </option>
+                                            <?php }?>
+                                        </select>
                                         <button type="submit" class="btn btn-success ms-3" id="send">
                                             <i class="bi bi-check-lg"></i>
                                         </button>
