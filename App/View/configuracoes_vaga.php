@@ -109,7 +109,7 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
                                 <td class="col-2">
                                     <?=$disciplina['id_disciplina']?>
                                 </td>
-                                <td class="col-9">
+                                <td class="col-10">
                                     <form class="d-flex"
                                         action="../Controller/UpdateDisciplina.php?id_disciplina=<?=$disciplina['id_disciplina']?>"
                                         method="post" name="frm">
@@ -118,13 +118,11 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
                                         <button type="submit" class="btn btn-success ms-3" id="send">
                                             <i class="bi bi-check-lg"></i>
                                         </button>
+                                        <a href="../Controller/DeleteDisciplina.php?id_disciplina=<?=$disciplina['id_disciplina']?>"
+                                            class="btn btn-danger ms-3">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
                                     </form>
-                                </td>
-                                <td class="col-1"> <a
-                                        href="../Controller/DeleteDisciplina.php?id_disciplina=<?=$disciplina['id_disciplina']?>"
-                                        class="btn btn-danger">
-                                        <i class="bi bi-trash"></i>
-                                    </a>
                                 </td>
                             </tr>
                             <?php
@@ -177,7 +175,7 @@ foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
                                 <td class="col-2">
                                     <?=$atuacao['id_atuacao']?>
                                 </td>
-                                <td class="col-9">
+                                <td class="col-10">
                                     <form class="d-flex"
                                         action="../Controller/UpdateAtuacao.php?id_atuacao=<?=$atuacao['id_atuacao']?>"
                                         method="post" name="frm">
@@ -186,13 +184,11 @@ foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
                                         <button type="submit" class="btn btn-success ms-3" id="send">
                                             <i class="bi bi-check-lg"></i>
                                         </button>
+                                        <a href="../Controller/DeleteAtuacao.php?id_atuacao=<?=$atuacao['id_atuacao']?>"
+                                            class="btn btn-danger ms-3">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
                                     </form>
-                                </td>
-                                <td class="col-1">
-                                    <a href="../Controller/DeleteAtuacao.php?id_atuacao=<?=$atuacao['id_atuacao']?>"
-                                        class="btn btn-danger">
-                                        <i class="bi bi-trash"></i>
-                                    </a>
                                 </td>
                             </tr>
                             <?php
@@ -258,20 +254,18 @@ foreach ($categoriaDAO->readCategoria() as $categoria) {?>
                                         <input type="text" name="nome_update_categoria" value="<?=$categoria['nome']?>"
                                             class="form-control">
                                     </td>
-                                    <td class="d-flex flex-row col-2">
+                                    <td class="d-flex flex-row col-3">
                                         <input type="text" name="destaque_update_categoria"
                                             value="<?=$categoria['destaque']?>" class="form-control">
                                         <button type="submit" class="btn btn-success ms-3" id="send">
                                             <i class="bi bi-check-lg"></i>
                                         </button>
+                                        <a href="../Controller/DeleteCategoria.php?id_categoria=<?=$categoria['id_categoria']?>"
+                                            class="btn btn-danger ms-3">
+                                            <i class="bi bi-trash"></i>
+                                        </a>
                                     </td>
                                 </form>
-                                <td class="col-1">
-                                    <a href="../Controller/DeleteCategoria.php?id_categoria=<?=$categoria['id_categoria']?>"
-                                        class="btn btn-danger">
-                                        <i class="bi bi-trash"></i>
-                                    </a>
-                                </td>
                             </tr>
                             <?php
 }
