@@ -232,10 +232,10 @@ foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
                                 <td class="col-2">
                                     ID
                                 </td>
-                                <td class="col-7 text-start">
+                                <td class="col-8 text-start">
                                     Nome
                                 </td>
-                                <td class="col-3 text-start">
+                                <td class="col-2 text-start">
                                     Categoria
                                 </td>
                             </tr>
