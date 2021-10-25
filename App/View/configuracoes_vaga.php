@@ -61,6 +61,7 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
 </head>
 
 <body>
+    <!-- Disciplina -->
     <section class="container">
         <div class="tabContainer">
             <div class="buttonContainer">
@@ -80,8 +81,8 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
                                     <form action="../Controller/CreateDisciplina.php" method="post"
                                         class="d-flex flex-row">
                                         Nome:
-                                        <input type="text" name="nome_create_disciplina" class="form-control">
-                                        <button class="btn btn-success">
+                                        <input type="text" name="nome_create_disciplina" class="form-control ms-2">
+                                        <button class="btn btn-success ms-3">
                                             <i class="bi bi-check-lg"></i>
                                         </button>
                                     </form>
@@ -146,8 +147,8 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
                                     <form action="../Controller/CreateAtuacao.php" method="post"
                                         class="d-flex flex-row">
                                         Nome:
-                                        <input type="text" name="nome_create_atuacao" class="form-control">
-                                        <button class="btn btn-success">
+                                        <input type="text" name="nome_create_atuacao" class="form-control ms-2">
+                                        <button class="btn btn-success ms-3">
                                             <i class="bi bi-check-lg"></i>
                                         </button>
                                     </form>
@@ -213,9 +214,9 @@ foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
                                     <form action="../Controller/CreateCategoria.php" method="post"
                                         class="d-flex flex-row">
                                         Nome:
-                                        <input type="text" name="nome_create_categoria" class="form-control">
+                                        <input type="text" name="nome_create_categoria" class="form-control ms-2 me-3">
                                         Destaque:
-                                        <select class="form-select" name="destaque_create_categoria">
+                                        <select class="form-select ms-2" name="destaque_create_categoria">
                                             <option selected value="Não">
                                                 Não
                                             </option>
@@ -223,7 +224,7 @@ foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
                                                 Sim
                                             </option>
                                         </select>
-                                        <button class="btn btn-success">
+                                        <button class="btn btn-success ms-3">
                                             <i class="bi bi-check-lg"></i>
                                         </button>
                                     </form>
