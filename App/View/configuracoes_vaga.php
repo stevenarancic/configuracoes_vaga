@@ -61,7 +61,6 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
 
 <body>
     <section class="container">
-        <h1>Configurações</h1>
         <div class="tabContainer">
             <div class="buttonContainer">
                 <button onclick="showPanel(0,'#fff')">Disciplina</button>
@@ -72,7 +71,7 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
                 <section class="container">
                     <div class="d-flex flex-row">
                         <div class="col">
-                            <h2>Disciplina</h2>
+                            <h1 class="text-start">Disciplina</h1>
                         </div>
                         <div class="col">
                             <div class="d-flex justify-content-end">
@@ -136,7 +135,7 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
                 <section class="container">
                     <div class="d-flex flex-row">
                         <div class="col">
-                            <h2>Atuação</h2>
+                            <h1 class="text-start">Atuação</h1>
                         </div>
                         <div class="col">
                             <div class="d-flex justify-content-end">
@@ -201,7 +200,7 @@ foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
                 <section class="container">
                     <div class="d-flex flex-row">
                         <div class="col">
-                            <h2>Categoria</h2>
+                            <h1 class="text-start">Categoria</h1>
                         </div>
                         <div class="col">
                             <div class="d-flex justify-content-end">
