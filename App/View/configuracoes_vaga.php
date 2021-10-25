@@ -93,19 +93,23 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
                     </div>
                     <table class="table">
                         <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nome</th>
+                            <tr class="row">
+                                <td class="col-2">
+                                    ID
+                                </td>
+                                <td class="col-10 text-start">
+                                    Nome
+                                </td>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
 foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
-                            <tr>
-                                <td>
+                            <tr class="row">
+                                <td class="col-2">
                                     <?=$disciplina['id_disciplina']?>
                                 </td>
-                                <td>
+                                <td class="col-9">
                                     <form class="d-flex"
                                         action="../Controller/UpdateDisciplina.php?id_disciplina=<?=$disciplina['id_disciplina']?>"
                                         method="post" name="frm">
@@ -116,8 +120,8 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
                                         </button>
                                     </form>
                                 </td>
-                                <td>
-                                    <a href="../Controller/DeleteDisciplina.php?id_disciplina=<?=$disciplina['id_disciplina']?>"
+                                <td class="col-1"> <a
+                                        href="../Controller/DeleteDisciplina.php?id_disciplina=<?=$disciplina['id_disciplina']?>"
                                         class="btn btn-danger">
                                         <i class="bi bi-trash"></i>
                                     </a>
@@ -157,19 +161,23 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
                     </div>
                     <table class="table">
                         <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nome</th>
+                            <tr class="row">
+                                <td class="col-2">
+                                    ID
+                                </td>
+                                <td class="col-10 text-start">
+                                    Nome
+                                </td>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
 foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
-                            <tr>
-                                <td>
+                            <tr class="row">
+                                <td class="col-2">
                                     <?=$atuacao['id_atuacao']?>
                                 </td>
-                                <td>
+                                <td class="col-9">
                                     <form class="d-flex"
                                         action="../Controller/UpdateAtuacao.php?id_atuacao=<?=$atuacao['id_atuacao']?>"
                                         method="post" name="frm">
@@ -180,7 +188,7 @@ foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
                                         </button>
                                     </form>
                                 </td>
-                                <td>
+                                <td class="col-1">
                                     <a href="../Controller/DeleteAtuacao.php?id_atuacao=<?=$atuacao['id_atuacao']?>"
                                         class="btn btn-danger">
                                         <i class="bi bi-trash"></i>
@@ -224,27 +232,33 @@ foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
                     </div>
                     <table class="table">
                         <thead>
-                            <tr>
-                                <th scope="col">#</th>
-                                <th scope="col">Nome</th>
-                                <th>Categoria</th>
+                            <tr class="row">
+                                <td class="col-2">
+                                    ID
+                                </td>
+                                <td class="col-7 text-start">
+                                    Nome
+                                </td>
+                                <td class="col-3 text-start">
+                                    Categoria
+                                </td>
                             </tr>
                         </thead>
                         <tbody>
                             <?php
 foreach ($categoriaDAO->readCategoria() as $categoria) {?>
-                            <tr>
-                                <td>
+                            <tr class="row">
+                                <td class="col-2">
                                     <?=$categoria['id_categoria']?>
                                 </td>
                                 <form class="d-flex"
                                     action="../Controller/UpdateCategoria.php?id_categoria=<?=$categoria['id_categoria']?>"
                                     method="post" name="frm">
-                                    <td>
+                                    <td class="col-7">
                                         <input type="text" name="nome_update_categoria" value="<?=$categoria['nome']?>"
                                             class="form-control">
                                     </td>
-                                    <td class="d-flex flex-row">
+                                    <td class="d-flex flex-row col-2">
                                         <input type="text" name="destaque_update_categoria"
                                             value="<?=$categoria['destaque']?>" class="form-control">
                                         <button type="submit" class="btn btn-success ms-3" id="send">
@@ -252,7 +266,7 @@ foreach ($categoriaDAO->readCategoria() as $categoria) {?>
                                         </button>
                                     </td>
                                 </form>
-                                <td>
+                                <td class="col-1">
                                     <a href="../Controller/DeleteCategoria.php?id_categoria=<?=$categoria['id_categoria']?>"
                                         class="btn btn-danger">
                                         <i class="bi bi-trash"></i>
