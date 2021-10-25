@@ -215,7 +215,14 @@ foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
                                         Nome:
                                         <input type="text" name="nome_create_categoria" class="form-control">
                                         Destaque:
-                                        <input type="text" name="destaque_create_categoria" class="form-control">
+                                        <select class="form-select" name="destaque_create_categoria">
+                                            <option selected value="Não">
+                                                Não
+                                            </option>
+                                            <option value="Sim">
+                                                Sim
+                                            </option>
+                                        </select>
                                         <button class="btn btn-success">
                                             <i class="bi bi-check-lg"></i>
                                         </button>
