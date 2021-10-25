@@ -24,17 +24,6 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
     <title>Configurações</title>
 
     <style>
-    .title {
-        font-family: sans-serif;
-        color: #dc2d5e;
-        text-align: center;
-    }
-
-    .tabContainer {
-        width: 100%;
-        height: 100%;
-    }
-
     .tabContainer .buttonContainer {
         height: 15%;
     }
@@ -59,7 +48,7 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
     .tabContainer .tabPanel {
         height: 85%;
         background-color: gray;
-        color: white;
+        color: black;
         text-align: center;
         padding-top: 105px;
         box-sizing: border-box;
@@ -75,9 +64,9 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
         <h1>Configurações</h1>
         <div class="tabContainer">
             <div class="buttonContainer">
-                <button onclick="showPanel(0,'#f44336')">Disciplina</button>
-                <button onclick="showPanel(1,'#4caf50')">Atuação</button>
-                <button onclick="showPanel(2,'#2196f3')">Categoria</button>
+                <button onclick="showPanel(0,'#fff')">Disciplina</button>
+                <button onclick="showPanel(1,'#fff')">Atuação</button>
+                <button onclick="showPanel(2,'#fff')">Categoria</button>
             </div>
             <div class="tabPanel">
                 <section class="container">
@@ -291,14 +280,14 @@ foreach ($categoriaDAO->readCategoria() as $categoria) {?>
             node.style.color = "";
         });
         tabButtons[panelIndex].style.backgroundColor = colorCode;
-        tabButtons[panelIndex].style.color = "white";
+        tabButtons[panelIndex].style.color = "black";
         tabPanels.forEach(function(node) {
             node.style.display = "none";
         });
         tabPanels[panelIndex].style.display = "block";
         tabPanels[panelIndex].style.backgroundColor = colorCode;
     }
-    showPanel(0, '#f44336');
+    showPanel(0, '#fff');
     </script>
 </body>
 
