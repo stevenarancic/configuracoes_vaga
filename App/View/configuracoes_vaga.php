@@ -250,11 +250,11 @@ foreach ($categoriaDAO->readCategoria() as $categoria) {?>
                                 <form class="d-flex"
                                     action="../Controller/UpdateCategoria.php?id_categoria=<?=$categoria['id_categoria']?>"
                                     method="post" name="frm">
-                                    <td class="col-7">
+                                    <td class="col-8">
                                         <input type="text" name="nome_update_categoria" value="<?=$categoria['nome']?>"
                                             class="form-control">
                                     </td>
-                                    <td class="d-flex flex-row col-3">
+                                    <td class="d-flex flex-row col-2">
                                         <input type="text" name="destaque_update_categoria"
                                             value="<?=$categoria['destaque']?>" class="form-control">
                                         <button type="submit" class="btn btn-success ms-3" id="send">
