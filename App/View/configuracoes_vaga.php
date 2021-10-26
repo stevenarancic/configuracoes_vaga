@@ -76,6 +76,9 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
                             <h1 class="text-start">Disciplina</h1>
                         </div>
                         <div class="col">
+                            <input type="text" class="form-control" id="search" placeholder="Pesquise por um registro">
+                        </div>
+                        <div class="col">
                             <div class="d-flex justify-content-end">
                                 <div id="div_create_disciplina" class="me-3">
                                     <form action="../Controller/CreateDisciplina.php" method="post"
@@ -94,7 +97,6 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
                         </div>
                     </div>
                     <div class="row">
-                        <input type="text" class="form-control" id="search">
                         <table class="table table-hover">
                             <thead>
                                 <tr class="row">
