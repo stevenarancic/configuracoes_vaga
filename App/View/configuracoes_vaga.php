@@ -226,7 +226,6 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
                 </section>
             </div>
             <div class="tabPanel">
-
                 <!-- Categoria -->
                 <section class="container">
                     <div class="d-flex flex-row">
