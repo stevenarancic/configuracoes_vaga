@@ -4,7 +4,6 @@ require_once "../../vendor/autoload.php";
 
 $disciplinaDAO = new \App\Model\DisciplinaDAO();
 $atuacaoDAO = new \App\Model\AtuacaoDAO();
-$categoriaDAO = new \App\Model\CategoriaDAO();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -270,8 +269,11 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
                                     <td class="col-2">
                                         ID
                                     </td>
-                                    <td class="col-10 text-start">
+                                    <td class="col-8 text-start">
                                         Nome
+                                    </td>
+                                    <td class="col-2 text-start">
+                                        Destaque
                                     </td>
                                 </tr>
                             </thead>
@@ -285,7 +287,7 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
                         $("#search_categoria").keypress(function() {
                             $.ajax({
                                 type: 'POST',
-                                url: '../Model/PesquisaConfiguracoesVaga.php?tabela=categoria',
+                                url: '../Model/PesquisaConfiguracoesVaga.php?tabela=categoria&coluna_extra=destaque',
                                 data: {
                                     name: $("#search_categoria").val(),
                                 },
@@ -300,7 +302,7 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
                     document.addEventListener("DOMContentLoaded", function() {
                         $.ajax({
                             type: 'POST',
-                            url: '../Model/PesquisaConfiguracoesVaga.php?tabela=categoria',
+                            url: '../Model/PesquisaConfiguracoesVaga.php?tabela=categoria&coluna_extra=destaque',
                             data: {
                                 name: $("#search_categoria").val(),
                             },
