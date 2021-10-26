@@ -56,6 +56,3 @@ if ($statement->rowCount() > 0) {
     </tr>
     ";
 }
-
-// printar isso no item
-// <td>" . $item['destaque'] . "</td>
