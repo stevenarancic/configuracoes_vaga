@@ -163,6 +163,20 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
                     });
                 });
                 </script>
+                <script>
+                document.addEventListener("DOMContentLoaded", function() {
+                    $.ajax({
+                        type: 'POST',
+                        url: '../Model/PesquisaConfiguracoesVaga.php?tabela=disciplina',
+                        data: {
+                            name: $("#search").val(),
+                        },
+                        success: function(data) {
+                            $("#output").html(data);
+                        }
+                    });
+                });
+                </script>
 
             </div>
             <div class="tabPanel">
