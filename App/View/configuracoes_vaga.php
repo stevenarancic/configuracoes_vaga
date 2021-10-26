@@ -133,6 +133,39 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
                         </tbody>
                     </table>
                 </section>
+                <div class="container">
+                    <div class="row">
+                        <input type="text" class="form-control" id="search">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Nome</th>
+                                </tr>
+                            </thead>
+                            <tbody id="output">
+
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <script type="text/javascript">
+                $(document).ready(function() {
+                    $("#search").keypress(function() {
+                        $.ajax({
+                            type: 'POST',
+                            url: '../Model/PesquisaConfiguracoesVaga.php?tabela=atuacao',
+                            data: {
+                                name: $("#search").val(),
+                            },
+                            success: function(data) {
+                                $("#output").html(data);
+                            }
+                        });
+                    });
+                });
+                </script>
+
             </div>
             <div class="tabPanel">
                 <!-- Atuacao -->
