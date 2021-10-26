@@ -14,14 +14,14 @@ if ($statement->rowCount() > 0) {
             switch ($item['destaque']) {
                 case 'Sim':
                     $select = "
-                    <select class=\"form-select\ col-2\" aria-label=\"Default select example\" name=\"destaque_update_categoria\">
+                    <select class=\"form-select\" aria-label=\"Default select example\" name=\"destaque_update_categoria\">
                         <option selected>" . $item['destaque'] . "</option>
                         <option value=\"Não\">Não</option>
                     </select>";
                     break;
                 case 'Não':
                     $select = "
-                    <select class=\"form-select\ col-2\" aria-label=\"Default select example\" name=\"destaque_update_categoria\">
+                    <select class=\"form-select\" aria-label=\"Default select example\" name=\"destaque_update_categoria\">
                         <option selected>" . $item['destaque'] . "</option>
                         <option value=\"Sim\">Sim</option>
                     </select>";
