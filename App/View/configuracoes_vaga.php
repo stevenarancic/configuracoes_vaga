@@ -155,6 +155,10 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
                             <h1 class="text-start">Atuação</h1>
                         </div>
                         <div class="col">
+                            <input type="text" class="form-control" id="search_atuacao"
+                                placeholder="Pesquise por um registro">
+                        </div>
+                        <div class="col">
                             <div class="d-flex justify-content-end">
                                 <div id="div_create_atuacao" class="me-3">
                                     <form action="../Controller/CreateAtuacao.php" method="post"
@@ -172,45 +176,53 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
                             </div>
                         </div>
                     </div>
-                    <table class="table">
-                        <thead>
-                            <tr class="row">
-                                <td class="col-2">
-                                    ID
-                                </td>
-                                <td class="col-10 text-start">
-                                    Nome
-                                </td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
-                            <tr class="row">
-                                <td class="col-2">
-                                    <?=$atuacao['id_atuacao']?>
-                                </td>
-                                <td class="col-10">
-                                    <form class="d-flex"
-                                        action="../Controller/UpdateAtuacao.php?id_atuacao=<?=$atuacao['id_atuacao']?>"
-                                        method="post" name="frm">
-                                        <input type="text" name="nome_update_atuacao" value="<?=$atuacao['nome']?>"
-                                            class="form-control">
-                                        <button type="submit" class="btn btn-success ms-3" id="send">
-                                            <i class="bi bi-check-lg"></i>
-                                        </button>
-                                        <a href="../Controller/DeleteAtuacao.php?id_atuacao=<?=$atuacao['id_atuacao']?>"
-                                            class="btn btn-danger ms-3">
-                                            <i class="bi bi-trash"></i>
-                                        </a>
-                                    </form>
-                                </td>
-                            </tr>
-                            <?php
-}
-?>
-                        </tbody>
-                    </table>
+                    <div class="row">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr class="row">
+                                    <td class="col-2">
+                                        ID
+                                    </td>
+                                    <td class="col-10 text-start">
+                                        Nome
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody id="output_atuacao">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <script type="text/javascript">
+                    $(document).ready(function() {
+                        $("#search_atuacao").keypress(function() {
+                            $.ajax({
+                                type: 'POST',
+                                url: '../Model/PesquisaConfiguracoesVaga.php?tabela=atuacao',
+                                data: {
+                                    name: $("#search_atuacao").val(),
+                                },
+                                success: function(data) {
+                                    $("#output_atuacao").html(data);
+                                }
+                            });
+                        });
+                    });
+                    </script>
+                    <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        $.ajax({
+                            type: 'POST',
+                            url: '../Model/PesquisaConfiguracoesVaga.php?tabela=atuacao',
+                            data: {
+                                name: $("#search_atuacao").val(),
+                            },
+                            success: function(data) {
+                                $("#output_atuacao").html(data);
+                            }
+                        });
+                    });
+                    </script>
                 </section>
             </div>
             <div class="tabPanel">
