@@ -76,6 +76,9 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
                             <h1 class="text-start">Disciplina</h1>
                         </div>
                         <div class="col">
+                            <input type="text" class="form-control" id="search" placeholder="Pesquise por um registro">
+                        </div>
+                        <div class="col">
                             <div class="d-flex justify-content-end">
                                 <div id="div_create_disciplina" class="me-3">
                                     <form action="../Controller/CreateDisciplina.php" method="post"
@@ -93,46 +96,56 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
                             </div>
                         </div>
                     </div>
-                    <table class="table">
-                        <thead>
-                            <tr class="row">
-                                <td class="col-2">
-                                    ID
-                                </td>
-                                <td class="col-10 text-start">
-                                    Nome
-                                </td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
-                            <tr class="row">
-                                <td class="col-2">
-                                    <?=$disciplina['id_disciplina']?>
-                                </td>
-                                <td class="col-10">
-                                    <form class="d-flex"
-                                        action="../Controller/UpdateDisciplina.php?id_disciplina=<?=$disciplina['id_disciplina']?>"
-                                        method="post" name="frm">
-                                        <input type="text" name="nome_update_disciplina"
-                                            value="<?=$disciplina['nome']?>" class="form-control">
-                                        <button type="submit" class="btn btn-success ms-3" id="send">
-                                            <i class="bi bi-check-lg"></i>
-                                        </button>
-                                        <a href="../Controller/DeleteDisciplina.php?id_disciplina=<?=$disciplina['id_disciplina']?>"
-                                            class="btn btn-danger ms-3">
-                                            <i class="bi bi-trash"></i>
-                                        </a>
-                                    </form>
-                                </td>
-                            </tr>
-                            <?php
-}
-?>
-                        </tbody>
-                    </table>
+                    <div class="row">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr class="row">
+                                    <td class="col-2">
+                                        ID
+                                    </td>
+                                    <td class="col-10 text-start">
+                                        Nome
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody id="output">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <script type="text/javascript">
+                    $(document).ready(function() {
+                        $("#search").keypress(function() {
+                            $.ajax({
+                                type: 'POST',
+                                url: '../Model/PesquisaConfiguracoesVaga.php?tabela=disciplina',
+                                data: {
+                                    name: $("#search").val(),
+                                },
+                                success: function(data) {
+                                    $("#output").html(data);
+                                }
+                            });
+                        });
+                    });
+                    </script>
+                    <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        $.ajax({
+                            type: 'POST',
+                            url: '../Model/PesquisaConfiguracoesVaga.php?tabela=disciplina',
+                            data: {
+                                name: $("#search").val(),
+                            },
+                            success: function(data) {
+                                $("#output").html(data);
+                            }
+                        });
+                    });
+                    </script>
                 </section>
+
+
             </div>
             <div class="tabPanel">
                 <!-- Atuacao -->
@@ -140,6 +153,10 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
                     <div class="d-flex flex-row">
                         <div class="col">
                             <h1 class="text-start">Atuação</h1>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" id="search_atuacao"
+                                placeholder="Pesquise por um registro">
                         </div>
                         <div class="col">
                             <div class="d-flex justify-content-end">
@@ -159,45 +176,53 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
                             </div>
                         </div>
                     </div>
-                    <table class="table">
-                        <thead>
-                            <tr class="row">
-                                <td class="col-2">
-                                    ID
-                                </td>
-                                <td class="col-10 text-start">
-                                    Nome
-                                </td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
-                            <tr class="row">
-                                <td class="col-2">
-                                    <?=$atuacao['id_atuacao']?>
-                                </td>
-                                <td class="col-10">
-                                    <form class="d-flex"
-                                        action="../Controller/UpdateAtuacao.php?id_atuacao=<?=$atuacao['id_atuacao']?>"
-                                        method="post" name="frm">
-                                        <input type="text" name="nome_update_atuacao" value="<?=$atuacao['nome']?>"
-                                            class="form-control">
-                                        <button type="submit" class="btn btn-success ms-3" id="send">
-                                            <i class="bi bi-check-lg"></i>
-                                        </button>
-                                        <a href="../Controller/DeleteAtuacao.php?id_atuacao=<?=$atuacao['id_atuacao']?>"
-                                            class="btn btn-danger ms-3">
-                                            <i class="bi bi-trash"></i>
-                                        </a>
-                                    </form>
-                                </td>
-                            </tr>
-                            <?php
-}
-?>
-                        </tbody>
-                    </table>
+                    <div class="row">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr class="row">
+                                    <td class="col-2">
+                                        ID
+                                    </td>
+                                    <td class="col-10 text-start">
+                                        Nome
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody id="output_atuacao">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <script type="text/javascript">
+                    $(document).ready(function() {
+                        $("#search_atuacao").keypress(function() {
+                            $.ajax({
+                                type: 'POST',
+                                url: '../Model/PesquisaConfiguracoesVaga.php?tabela=atuacao',
+                                data: {
+                                    name: $("#search_atuacao").val(),
+                                },
+                                success: function(data) {
+                                    $("#output_atuacao").html(data);
+                                }
+                            });
+                        });
+                    });
+                    </script>
+                    <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        $.ajax({
+                            type: 'POST',
+                            url: '../Model/PesquisaConfiguracoesVaga.php?tabela=atuacao',
+                            data: {
+                                name: $("#search_atuacao").val(),
+                            },
+                            success: function(data) {
+                                $("#output_atuacao").html(data);
+                            }
+                        });
+                    });
+                    </script>
                 </section>
             </div>
             <div class="tabPanel">
@@ -207,6 +232,10 @@ foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
                     <div class="d-flex flex-row">
                         <div class="col">
                             <h1 class="text-start">Categoria</h1>
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" id="search_categoria"
+                                placeholder="Pesquise por um registro">
                         </div>
                         <div class="col">
                             <div class="d-flex justify-content-end">
@@ -235,64 +264,53 @@ foreach ($atuacaoDAO->readAtuacao() as $atuacao) {?>
                             </div>
                         </div>
                     </div>
-                    <table class="table">
-                        <thead>
-                            <tr class="row">
-                                <td class="col-2">
-                                    ID
-                                </td>
-                                <td class="col-8 text-start">
-                                    Nome
-                                </td>
-                                <td class="col-2 text-start">
-                                    Categoria
-                                </td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-foreach ($categoriaDAO->readCategoria() as $categoria) {?>
-                            <tr class="row">
-                                <td class="col-2">
-                                    <?=$categoria['id_categoria']?>
-                                </td>
-                                <form class="d-flex"
-                                    action="../Controller/UpdateCategoria.php?id_categoria=<?=$categoria['id_categoria']?>"
-                                    method="post" name="frm">
-                                    <td class="col-8">
-                                        <input type="text" name="nome_update_categoria" value="<?=$categoria['nome']?>"
-                                            class="form-control">
+                    <div class="row">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr class="row">
+                                    <td class="col-2">
+                                        ID
                                     </td>
-                                    <td class="d-flex flex-row col-2">
-                                        <select class="form-select" name="destaque_update_categoria">
-                                            <option selected>
-                                                <?=$categoria['destaque']?>
-                                            </option>
-                                            <?php if ($categoria['destaque'] == 'Sim') {?>
-                                            <option value="Não">
-                                                Não
-                                            </option>
-                                            <?php } else {?>
-                                            <option value="Sim">
-                                                Sim
-                                            </option>
-                                            <?php }?>
-                                        </select>
-                                        <button type="submit" class="btn btn-success ms-3" id="send">
-                                            <i class="bi bi-check-lg"></i>
-                                        </button>
-                                        <a href="../Controller/DeleteCategoria.php?id_categoria=<?=$categoria['id_categoria']?>"
-                                            class="btn btn-danger ms-3">
-                                            <i class="bi bi-trash"></i>
-                                        </a>
+                                    <td class="col-10 text-start">
+                                        Nome
                                     </td>
-                                </form>
-                            </tr>
-                            <?php
-}
-?>
-                        </tbody>
-                    </table>
+                                </tr>
+                            </thead>
+                            <tbody id="output_categoria">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <script type="text/javascript">
+                    $(document).ready(function() {
+                        $("#search_categoria").keypress(function() {
+                            $.ajax({
+                                type: 'POST',
+                                url: '../Model/PesquisaConfiguracoesVaga.php?tabela=categoria',
+                                data: {
+                                    name: $("#search_categoria").val(),
+                                },
+                                success: function(data) {
+                                    $("#output_categoria").html(data);
+                                }
+                            });
+                        });
+                    });
+                    </script>
+                    <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        $.ajax({
+                            type: 'POST',
+                            url: '../Model/PesquisaConfiguracoesVaga.php?tabela=categoria',
+                            data: {
+                                name: $("#search_categoria").val(),
+                            },
+                            success: function(data) {
+                                $("#output_categoria").html(data);
+                            }
+                        });
+                    });
+                    </script>
                 </section>
             </div>
         </div>
