@@ -93,63 +93,42 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
                             </div>
                         </div>
                     </div>
-                    <table class="table">
-                        <thead>
-                            <tr class="row">
-                                <td class="col-2">
-                                    ID
-                                </td>
-                                <td class="col-10 text-start">
-                                    Nome
-                                </td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
-                            <tr class="row">
-                                <td class="col-2">
-                                    <?=$disciplina['id_disciplina']?>
-                                </td>
-                                <td class="col-10">
-                                    <form class="d-flex"
-                                        action="../Controller/UpdateDisciplina.php?id_disciplina=<?=$disciplina['id_disciplina']?>"
-                                        method="post" name="frm">
-                                        <input type="text" name="nome_update_disciplina"
-                                            value="<?=$disciplina['nome']?>" class="form-control">
-                                        <button type="submit" class="btn btn-success ms-3" id="send">
-                                            <i class="bi bi-check-lg"></i>
-                                        </button>
-                                        <a href="../Controller/DeleteDisciplina.php?id_disciplina=<?=$disciplina['id_disciplina']?>"
-                                            class="btn btn-danger ms-3">
-                                            <i class="bi bi-trash"></i>
-                                        </a>
-                                    </form>
-                                </td>
-                            </tr>
-                            <?php
-}
-?>
-                        </tbody>
-                    </table>
-                </section>
-                <div class="row">
-                    <input type="text" class="form-control" id="search">
-                    <table class="table table-hover">
-                        <thead>
-                            <tr>
-                                <th>ID</th>
-                                <th>Nome</th>
-                            </tr>
-                        </thead>
-                        <tbody id="output">
+                    <div class="row">
+                        <input type="text" class="form-control" id="search">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr class="row">
+                                    <td class="col-2">
+                                        ID
+                                    </td>
+                                    <td class="col-10 text-start">
+                                        Nome
+                                    </td>
+                                </tr>
+                            </thead>
+                            <tbody id="output">
 
-                        </tbody>
-                    </table>
-                </div>
-                <script type="text/javascript">
-                $(document).ready(function() {
-                    $("#search").keypress(function() {
+                            </tbody>
+                        </table>
+                    </div>
+                    <script type="text/javascript">
+                    $(document).ready(function() {
+                        $("#search").keypress(function() {
+                            $.ajax({
+                                type: 'POST',
+                                url: '../Model/PesquisaConfiguracoesVaga.php?tabela=disciplina',
+                                data: {
+                                    name: $("#search").val(),
+                                },
+                                success: function(data) {
+                                    $("#output").html(data);
+                                }
+                            });
+                        });
+                    });
+                    </script>
+                    <script>
+                    document.addEventListener("DOMContentLoaded", function() {
                         $.ajax({
                             type: 'POST',
                             url: '../Model/PesquisaConfiguracoesVaga.php?tabela=disciplina',
@@ -161,22 +140,9 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
                             }
                         });
                     });
-                });
-                </script>
-                <script>
-                document.addEventListener("DOMContentLoaded", function() {
-                    $.ajax({
-                        type: 'POST',
-                        url: '../Model/PesquisaConfiguracoesVaga.php?tabela=disciplina',
-                        data: {
-                            name: $("#search").val(),
-                        },
-                        success: function(data) {
-                            $("#output").html(data);
-                        }
-                    });
-                });
-                </script>
+                    </script>
+                </section>
+
 
             </div>
             <div class="tabPanel">
