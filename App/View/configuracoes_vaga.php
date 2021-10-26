@@ -234,6 +234,10 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
                             <h1 class="text-start">Categoria</h1>
                         </div>
                         <div class="col">
+                            <input type="text" class="form-control" id="search_categoria"
+                                placeholder="Pesquise por um registro">
+                        </div>
+                        <div class="col">
                             <div class="d-flex justify-content-end">
                                 <div id="div_create_categoria" class="me-3">
                                     <form action="../Controller/CreateCategoria.php" method="post"
@@ -260,64 +264,53 @@ $categoriaDAO = new \App\Model\CategoriaDAO();
                             </div>
                         </div>
                     </div>
-                    <table class="table">
-                        <thead>
-                            <tr class="row">
-                                <td class="col-2">
-                                    ID
-                                </td>
-                                <td class="col-8 text-start">
-                                    Nome
-                                </td>
-                                <td class="col-2 text-start">
-                                    Categoria
-                                </td>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php
-foreach ($categoriaDAO->readCategoria() as $categoria) {?>
-                            <tr class="row">
-                                <td class="col-2">
-                                    <?=$categoria['id_categoria']?>
-                                </td>
-                                <form class="d-flex"
-                                    action="../Controller/UpdateCategoria.php?id_categoria=<?=$categoria['id_categoria']?>"
-                                    method="post" name="frm">
-                                    <td class="col-8">
-                                        <input type="text" name="nome_update_categoria" value="<?=$categoria['nome']?>"
-                                            class="form-control">
+                    <div class="row">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr class="row">
+                                    <td class="col-2">
+                                        ID
                                     </td>
-                                    <td class="d-flex flex-row col-2">
-                                        <select class="form-select" name="destaque_update_categoria">
-                                            <option selected>
-                                                <?=$categoria['destaque']?>
-                                            </option>
-                                            <?php if ($categoria['destaque'] == 'Sim') {?>
-                                            <option value="Não">
-                                                Não
-                                            </option>
-                                            <?php } else {?>
-                                            <option value="Sim">
-                                                Sim
-                                            </option>
-                                            <?php }?>
-                                        </select>
-                                        <button type="submit" class="btn btn-success ms-3" id="send">
-                                            <i class="bi bi-check-lg"></i>
-                                        </button>
-                                        <a href="../Controller/DeleteCategoria.php?id_categoria=<?=$categoria['id_categoria']?>"
-                                            class="btn btn-danger ms-3">
-                                            <i class="bi bi-trash"></i>
-                                        </a>
+                                    <td class="col-10 text-start">
+                                        Nome
                                     </td>
-                                </form>
-                            </tr>
-                            <?php
-}
-?>
-                        </tbody>
-                    </table>
+                                </tr>
+                            </thead>
+                            <tbody id="output_categoria">
+
+                            </tbody>
+                        </table>
+                    </div>
+                    <script type="text/javascript">
+                    $(document).ready(function() {
+                        $("#search_categoria").keypress(function() {
+                            $.ajax({
+                                type: 'POST',
+                                url: '../Model/PesquisaConfiguracoesVaga.php?tabela=categoria',
+                                data: {
+                                    name: $("#search_categoria").val(),
+                                },
+                                success: function(data) {
+                                    $("#output_categoria").html(data);
+                                }
+                            });
+                        });
+                    });
+                    </script>
+                    <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                        $.ajax({
+                            type: 'POST',
+                            url: '../Model/PesquisaConfiguracoesVaga.php?tabela=categoria',
+                            data: {
+                                name: $("#search_categoria").val(),
+                            },
+                            success: function(data) {
+                                $("#output_categoria").html(data);
+                            }
+                        });
+                    });
+                    </script>
                 </section>
             </div>
         </div>
