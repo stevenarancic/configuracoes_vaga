@@ -133,21 +133,19 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
                         </tbody>
                     </table>
                 </section>
-                <div class="container">
-                    <div class="row">
-                        <input type="text" class="form-control" id="search">
-                        <table class="table table-hover">
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nome</th>
-                                </tr>
-                            </thead>
-                            <tbody id="output">
+                <div class="row">
+                    <input type="text" class="form-control" id="search">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                            </tr>
+                        </thead>
+                        <tbody id="output">
 
-                            </tbody>
-                        </table>
-                    </div>
+                        </tbody>
+                    </table>
                 </div>
                 <script type="text/javascript">
                 $(document).ready(function() {
