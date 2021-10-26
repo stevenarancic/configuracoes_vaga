@@ -71,19 +71,20 @@ $atuacaoDAO = new \App\Model\AtuacaoDAO();
             <div class="tabPanel">
                 <section class="container">
                     <div class="d-flex flex-row">
-                        <div class="col">
+                        <div class="">
                             <h1 class="text-start">Disciplina</h1>
                         </div>
-                        <div class="col">
+                        <div class="w-100 me-3 ms-3 d-flex align-items-center">
                             <input type="text" class="form-control" id="search" placeholder="Pesquise por um registro">
                         </div>
-                        <div class="col">
+                        <div class="d-flex align-items-center">
                             <div class="d-flex justify-content-end">
                                 <div id="div_create_disciplina" class="me-3">
                                     <form action="../Controller/CreateDisciplina.php" method="post"
                                         class="d-flex flex-row">
                                         Nome:
-                                        <input type="text" name="nome_create_disciplina" class="form-control ms-2">
+                                        <input type="text" name="nome_create_disciplina" class="form-control ms-2"
+                                            style="width: 200px;">
                                         <button class="btn btn-success ms-3">
                                             <i class="bi bi-check-lg"></i>
                                         </button>
@@ -150,20 +151,21 @@ $atuacaoDAO = new \App\Model\AtuacaoDAO();
                 <!-- Atuacao -->
                 <section class="container">
                     <div class="d-flex flex-row">
-                        <div class="col">
+                        <div class="">
                             <h1 class="text-start">Atuação</h1>
                         </div>
-                        <div class="col">
+                        <div class="w-100 ms-3 me-3 d-flex align-items-center">
                             <input type="text" class="form-control" id="search_atuacao"
                                 placeholder="Pesquise por um registro">
                         </div>
-                        <div class="col">
+                        <div class="d-flex align-items-center">
                             <div class="d-flex justify-content-end">
                                 <div id="div_create_atuacao" class="me-3">
                                     <form action="../Controller/CreateAtuacao.php" method="post"
                                         class="d-flex flex-row">
                                         Nome:
-                                        <input type="text" name="nome_create_atuacao" class="form-control ms-2">
+                                        <input type="text" name="nome_create_atuacao" class="form-control ms-2"
+                                            style="width: 200px;">
                                         <button class="btn btn-success ms-3">
                                             <i class="bi bi-check-lg"></i>
                                         </button>
@@ -228,22 +230,24 @@ $atuacaoDAO = new \App\Model\AtuacaoDAO();
                 <!-- Categoria -->
                 <section class="container">
                     <div class="d-flex flex-row">
-                        <div class="col">
+                        <div>
                             <h1 class="text-start">Categoria</h1>
                         </div>
-                        <div class="col">
+                        <div class="w-100 ms-3 me-3 d-flex align-items-center">
                             <input type="text" class="form-control" id="search_categoria"
                                 placeholder="Pesquise por um registro">
                         </div>
-                        <div class="col">
+                        <div class="d-flex align-items-center">
                             <div class="d-flex justify-content-end">
                                 <div id="div_create_categoria" class="me-3">
                                     <form action="../Controller/CreateCategoria.php" method="post"
                                         class="d-flex flex-row">
                                         Nome:
-                                        <input type="text" name="nome_create_categoria" class="form-control ms-2 me-3">
+                                        <input type="text" name="nome_create_categoria" class="form-control ms-2 me-3"
+                                            style="width: 200px;">
                                         Destaque:
-                                        <select class="form-select ms-2" name="destaque_create_categoria">
+                                        <select class="form-select ms-2" name="destaque_create_categoria"
+                                            style="width: 100px;">
                                             <option selected value="Não">
                                                 Não
                                             </option>
