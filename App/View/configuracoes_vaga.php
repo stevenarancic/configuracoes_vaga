@@ -154,7 +154,7 @@ foreach ($disciplinaDAO->readDisciplina() as $disciplina) {?>
                     $("#search").keypress(function() {
                         $.ajax({
                             type: 'POST',
-                            url: '../Model/PesquisaConfiguracoesVaga.php?tabela=atuacao',
+                            url: '../Model/PesquisaConfiguracoesVaga.php?tabela=disciplina',
                             data: {
                                 name: $("#search").val(),
                             },
